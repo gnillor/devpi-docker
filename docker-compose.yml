@@ -1,0 +1,18 @@
+version: "2.3"
+
+services:
+  devpi:
+    container_name: devpi
+    image: devpi:4.6.0
+    ports:
+      - "3141:3141"
+    mem_limit: 1g
+    restart: always
+    volumes:
+      - /Users/Gnillor/Downloads:/data
+    networks:
+      - pypi
+
+networks:
+  pypi:
+    driver: bridge
