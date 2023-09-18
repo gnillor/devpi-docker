@@ -27,7 +27,7 @@ function defaults {
 function init_devpi {
     echo "[RUN]: Init devpi-server"
     devpi-init --serverdir ${DEVPI_SERVERDIR}
-    nohup devpi-server --host 0.0.0.0 --port 3141 --serverdir ${DEVPI_SERVERDIR} --replica-max-retries 3 --file-replication-threads 4 > ${DEVPI_SERVERDIR}/devpi.log 2>&1 &
+    nohup devpi-server --host 0.0.0.0 --port 3141 --serverdir ${DEVPI_SERVERDIR} --threads 4 --replica-max-retries 3 --replica-max-retries 3 --file-replication-threads 4 > ${DEVPI_SERVERDIR}/devpi.log 2>&1 &
     sleep 6s
 
     devpi use http://localhost:3141
@@ -44,7 +44,7 @@ if [ "$1" = 'devpi' ]; then
         init_devpi
     else
         echo "[RUN]: Launching devpi-server"
-        nohup devpi-server --host 0.0.0.0 --port 3141 --serverdir ${DEVPI_SERVERDIR} --replica-max-retries 3 --file-replication-threads 4 > ${DEVPI_SERVERDIR}/devpi.log 2>&1 &
+        nohup devpi-server --host 0.0.0.0 --port 3141 --serverdir ${DEVPI_SERVERDIR} --threads 4 --replica-max-retries 3 --file-replication-threads 4 > ${DEVPI_SERVERDIR}/devpi.log 2>&1 &
     fi
 fi
 
