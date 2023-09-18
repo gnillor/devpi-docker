@@ -9,7 +9,7 @@ services:
     mem_limit: 1g
     restart: always
     volumes:
-      - /Users/Gnillor/Downloads:/data
+      - /data:/data
     networks:
       - pypi
 
